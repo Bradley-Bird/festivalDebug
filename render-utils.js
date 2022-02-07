@@ -28,5 +28,6 @@ export function renderFriend(friend) {
     }
 
     div.append(nameEl, emojiEl);
+    return div;
 
 }

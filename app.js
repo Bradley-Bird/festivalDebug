@@ -6,7 +6,7 @@ const friendsEl = document.querySelector('.friends');
 const mushroomsEl = document.querySelector('.mushrooms');
 const addMushroomButton = document.getElementById('add-mushroom-button');
 const addFriendButton = document.getElementById('add-friend-button');
-const friendInputEl = document.getElementById('friend-input');
+
 // initialize state
 
 let mushroomCount = 3;
@@ -32,9 +32,9 @@ const friendData = [
 
 function displayFriends() {
     for (let friend of friendData) {
-        const friendsEl = renderFriend(friendData);
+        const friendEl = renderFriend(friend);
 
-        friendsEl.addEventListener('click', () => {
+        friendEl.addEventListener('click', () => {
             const friendInState = findFriendByName(friend.name, friendData);
 
             if (mushroomCount === 0) {
@@ -42,14 +42,14 @@ function displayFriends() {
             }
             if (mushroomCount > 0 && friendInState.satisfaction < 3) {
                 friendInState.happiness++;
-                mushroomCount++;
+                mushroomCount;
 
                 displayFriends(friendData);
                 displayMushrooms();
             }
         });
 
-        friendsEl.append(friendsEl);
+        friendsEl.append(friendEl);
     }
 }
 
@@ -62,6 +62,7 @@ function displayMushrooms() {
 }
 
 addFriendButton.addEventListener('click', () => {
+    const friendInputEl = document.getElementById('friend-input');
     const name = friendInputEl;
 
     addFriend(name, friendData);
